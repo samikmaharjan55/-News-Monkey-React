@@ -2,30 +2,311 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 
 export class News extends Component {
+  articles = [
+    {
+      source: { id: "reuters", name: "Reuters" },
+      author: "Abhirup Roy, Ben Klayman",
+      title:
+        "Volkswagen's $5 bln investment in Rivian boosts EV maker's shares - Reuters",
+      description:
+        "German automaker Volkswagen Group will invest up to $5 billion in U.S. electric-vehicle maker Rivian as part of a new, equally controlled joint venture to share EV architecture and software, the companies said on Tuesday.",
+      url: "https://www.reuters.com/business/autos-transportation/volkswagen-invest-up-5-billion-rivian-part-tech-joint-venture-2024-06-25/",
+      urlToImage:
+        "https://www.reuters.com/resizer/v2/UWNRNJBIZNOGVO7R3CRZRHT3U4.jpg?auth=67978678f9576c83850d33c9925cff5b7abf9a1532959341f1abb2e07992f1bb&height=1005&width=1920&quality=80&smart=true",
+      publishedAt: "2024-06-26T07:56:00Z",
+      content: null,
+    },
+    {
+      source: { id: "the-verge", name: "The Verge" },
+      author: "Chris Welch",
+      title:
+        "Ultimate Ears announces new Everboom speaker, Boom 4 with USB-C, and more - The Verge",
+      description:
+        "UE’s speakers come in new colors and now contain more recycled materials. Plus, they’re all getting a new megaphone feature.",
+      url: "https://www.theverge.com/2024/6/26/24185957/ue-everboom-boom-4-wonderboom-megaboom-features",
+      urlToImage:
+        "https://cdn.vox-cdn.com/thumbor/Q-WjlfkZVskLIKcNw_GBkzgBkxI=/0x0:2040x1406/1200x628/filters:focal(1020x703:1021x704)/cdn.vox-cdn.com/uploads/chorus_asset/file/25506379/everboom.jpg",
+      publishedAt: "2024-06-26T07:01:00Z",
+      content:
+        "Ultimate Ears announces new Everboom speaker, Boom 4 with USB-C, and more\r\nUltimate Ears announces new Everboom speaker, Boom 4 with USB-C, and more\r\n / UEs speakers come in new colors and now contai… [+2455 chars]",
+    },
+    {
+      source: { id: null, name: "Yahoo Entertainment" },
+      author: null,
+      title:
+        "Stock market today: Nvidia rebound fuels Nasdaq rally as Dow falls 300 points - Yahoo Finance",
+      description: null,
+      url: "https://finance.yahoo.com/news/stock-market-today-nvidia-rebound-fuels-nasdaq-rally-as-dow-falls-300-points-200137489.html",
+      urlToImage: null,
+      publishedAt: "2024-06-26T06:36:00Z",
+      content:
+        "If you click 'Accept all', we and our partners, including 237 who are part of the IAB Transparency &amp; Consent Framework, will also store and/or access information on a device (in other words, use … [+678 chars]",
+    },
+    {
+      source: { id: null, name: "CBS Sports" },
+      author: "",
+      title:
+        "2024 NBA Mock Draft: Dalton Knecht surges up to No. 6, Bronny James goes to Lakers late in second round - CBS Sports",
+      description:
+        "Zaccharie Risacher edges Alex Carr for the top spot in Kyle Boone's two-round mock draft",
+      url: "https://www.cbssports.com/nba/news/2024-nba-mock-draft-dalton-knecht-surges-up-to-no-6-bronny-james-goes-to-lakers-late-in-second-round/",
+      urlToImage:
+        "https://sportshub.cbsistatic.com/i/r/2024/06/25/8285b2ab-f385-47c7-a2d5-3d996e1b724e/thumbnail/1200x675/709dbe8138830227f08c94ede5601791/usatsi-22901377-1.jpg",
+      publishedAt: "2024-06-26T06:18:00Z",
+      content:
+        "Months and months of speculation, analyzing (and overanalyzing) have all led to this. The 2024 NBA Draft will begin Wednesday night, where all the questions we have -- about who goes No. 1, about whe… [+814 chars]",
+    },
+    {
+      source: { id: null, name: "NPR" },
+      author: null,
+      title:
+        "FDA warns top U.S. bakery not to claim foods contain allergens when they don't - NPR",
+      description:
+        "The FDA found Bimbo Bakeries USA — which includes brands such as Sara Lee and Ball Park buns and rolls — listed ingredients such as sesame or tree nuts on labels even when they weren't in the foods.",
+      url: "https://www.npr.org/2024/06/26/g-s1-6238/fda-warns-bakery-foods-allergens",
+      urlToImage:
+        "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/2000x1125+0+104/resize/1400/quality/100/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fd8%2F16%2Fe55fa0fb497f9e722a56bbbc2b8f%2Fap24177785376325.jpg",
+      publishedAt: "2024-06-26T05:46:56Z",
+      content:
+        "Federal food safety regulators said Tuesday that they have warned a top U.S. bakery to stop using labels that say its products contain potentially dangerous allergens when they don't.\r\nU.S. Food and … [+2568 chars]",
+    },
+    {
+      source: { id: null, name: "Hollywood Reporter" },
+      author: "Katie Kilkenny",
+      title:
+        "IATSE Reaches Tentative Agreement on Basic Agreement With Studios and Streamers - Hollywood Reporter",
+      description:
+        "The provisional deal, which is still subject to a ratification vote, raises wages by 7 percent in the first year, includes language covering AI and applies additional penalties for long workdays.",
+      url: "http://www.hollywoodreporter.com/business/business-news/iatse-tentative-agreement-studios-streamers-1235932608/",
+      urlToImage:
+        "https://www.hollywoodreporter.com/wp-content/uploads/2024/02/2024-IATSE_teamsters-04_E.jpg?w=1024",
+      publishedAt: "2024-06-26T05:15:00Z",
+      content:
+        "On Tuesday night the crew union IATSE reached a tentative agreement on a new three-year contract covering 13 West Coast Locals with Hollywood’s top studios and streamers.\r\nLeaders of the 13 West Coas… [+3646 chars]",
+    },
+    {
+      source: { id: "cbs-news", name: "CBS News" },
+      author: "Jesse Sarles, Austen Erblat",
+      title:
+        "Lauren Boebert wins crowded House GOP primary in new Colorado district - CBS News",
+      description:
+        "Republican Rep. Lauren Boebert declared victory on Tuesday night in the primary election in her new Colorado district.",
+      url: "https://www.cbsnews.com/colorado/news/lauren-boebert-wins-colorado-4th-congressional-district-republican-primary/",
+      urlToImage:
+        "https://assets2.cbsnewsstatic.com/hub/i/r/2024/06/26/7e070f25-2f00-46f7-b7c8-670413a2d960/thumbnail/1200x630/422748044f79ba0d00e98d2723e5f785/boebert.jpg?v=d44ea471ad55b1f821a0763c85064960",
+      publishedAt: "2024-06-26T04:40:45Z",
+      content:
+        "Republican Rep. Lauren Boebert has emerged victorious in the primary election in her new Colorado district.\r\nThe controversial Congresswoman defeated five GOP opponents in a competitive primary in Co… [+5329 chars]",
+    },
+    {
+      source: { id: "cnn", name: "CNN" },
+      author: "Ivana Kottasová",
+      title:
+        "International Criminal Court issues war crimes arrest warrants for Russia’s Shoigu and Gerasimov - CNN",
+      description:
+        "The International Criminal Court (ICC) issued an arrest warrant for former Russian Defense Minister Sergei Shoigu and the Chief of the General Staff Valery Gerasimov for alleged international crimes, war crimes and crimes against humanity.",
+      url: "https://www.cnn.com/2024/06/25/europe/icc-arrest-warrants-shoigu-gerasimov-intl/index.html",
+      urlToImage:
+        "https://media.cnn.com/api/v1/images/stellar/prod/20240625-fjfjfj.jpg?c=16x9&q=w_800,c_fill",
+      publishedAt: "2024-06-26T04:27:00Z",
+      content:
+        "The International Criminal Court (ICC) has issued an arrest warrant for former Russian Defense Minister Sergei Shoigu and the Chief of the General Staff Valery Gerasimov for alleged international cri… [+6172 chars]",
+    },
+    {
+      source: { id: null, name: "Yahoo Entertainment" },
+      author: null,
+      title:
+        "Inside the Mikal Bridges trade: What it means for the Knicks and the league at large - Yahoo Sports",
+      description: null,
+      url: "https://sports.yahoo.com/inside-the-mikal-bridges-trade-what-it-means-for-the-knicks-and-the-league-at-large-042345090.html",
+      urlToImage: null,
+      publishedAt: "2024-06-26T04:23:45Z",
+      content:
+        "If you click 'Accept all', we and our partners, including 237 who are part of the IAB Transparency &amp; Consent Framework, will also store and/or access information on a device (in other words, use … [+678 chars]",
+    },
+    {
+      source: { id: "nbc-news", name: "NBC News" },
+      author: "Linda Carroll",
+      title:
+        "Plant-based meat alternatives could be heart-healthier than meat, study suggests - NBC News",
+      description:
+        "Plant-based meat alternatives, despite being ultraprocessed, may be healthier for the heart than meat, a new report suggests.",
+      url: "https://www.nbcnews.com/health/heart-health/plant-based-meat-alternatives-heart-healthier-study-rcna158693",
+      urlToImage:
+        "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-06/240624-vegan-pea-protein-burger-stock-ac-1122p-fd14b3.jpg",
+      publishedAt: "2024-06-26T04:01:00Z",
+      content:
+        "Plant-based meat alternatives, despite being ultraprocessed, may be healthier for the heart than meat, a new report suggests.\r\nA review of previous studies found that risk factors for heart disease, … [+5574 chars]",
+    },
+    {
+      source: { id: "google-news", name: "Google News" },
+      author: "NBC News",
+      title:
+        "Growing wildfire in central Oregon chars 1,700 acres, prompts evacuations - NBC News",
+      description: null,
+      url: "https://news.google.com/rss/articles/CBMicWh0dHBzOi8vd3d3Lm5iY25ld3MuY29tL25ld3MvdXMtbmV3cy9kYXJsZW5lLTMtd2lsZGZpcmUtY2VudHJhbC1vcmVnb24tY2hhcnMtYWNyZXMtcHJvbXB0cy1ldmFjdWF0aW9ucy1yY25hMTU4OTYy0gEraHR0cHM6Ly93d3cubmJjbmV3cy5jb20vbmV3cy9hbXAvcmNuYTE1ODk2Mg?oc=5",
+      urlToImage: null,
+      publishedAt: "2024-06-26T03:19:00Z",
+      content: null,
+    },
+    {
+      source: { id: null, name: "KGO-TV" },
+      author: "Dan Noyes",
+      title:
+        "EXCLUSIVE: First-hand account of Oakland Mayor Sheng Thao donor paying to help her 2022 campaign - KGO-TV",
+      description:
+        "Sheng Thao won the Oakland mayor's race in November 2022 by only 677 votes. In light of the FBI raid on her home last week, the ABC7 News I-Team has learned that the man who came in second, Loren Taylor, is preparing his campaign staff to take another run.",
+      url: "https://abc7news.com/post/exclusive-hand-account-oakland-mayor-sheng-thao-donor/15000764/",
+      urlToImage:
+        "https://cdn.abcotvs.com/dip/images/15001017_062524-kgo-thao-react-split-img.jpg?w=1600",
+      publishedAt: "2024-06-26T02:58:02Z",
+      content:
+        "OAKLAND, Calif. (KGO) -- Sheng Thao won the Oakland mayor's race in November 2022 by only 677 votes. In light of the FBI raid on her home last week, the ABC7 News I-Team has learned that the man who … [+4786 chars]",
+    },
+    {
+      source: { id: null, name: "NASA" },
+      author: "Tiernan P. Doyle",
+      title: "NASA, SpaceX Launch NOAA's Latest Weather Satellite - NASA",
+      description:
+        "NASA successfully launched the fourth and final satellite in a series of advanced weather satellites for NOAA (National Oceanic and Atmospheric",
+      url: "https://www.nasa.gov/news-release/nasa-spacex-launch-noaas-latest-weather-satellite/",
+      urlToImage:
+        "https://www.nasa.gov/wp-content/uploads/2024/06/goes-u-launch.jpg",
+      publishedAt: "2024-06-26T02:51:54Z",
+      content:
+        "NASA successfully launched the fourth and final satellite in a series of advanced weather satellites for NOAA (National Oceanic and Atmospheric Administration) at 5:26 p.m. EDT Tuesday. The GOES-U (G… [+3708 chars]",
+    },
+    {
+      source: { id: null, name: "Arizona Sports" },
+      author: ", Arizona Sports",
+      title:
+        "Houston Rockets interested in trading for Suns' Kevin Durant, per report - Arizona Sports",
+      description:
+        "The Houston Rockets are interested in trading for Phoenix Suns forward Kevin Durant, according to ESPN's Adrian Wojnarowski.",
+      url: "https://arizonasports.com/story/3549643/houston-rockets-interested-in-trading-for-suns-kevin-durant-per-report/",
+      urlToImage:
+        "http://arizonasports.com/wp-content/uploads/2024/06/GettyImages-2148428709-e1719369360323.jpg",
+      publishedAt: "2024-06-26T02:43:00Z",
+      content:
+        "The Houston Rockets are interested in trading for Phoenix Suns forward Kevin Durant, according to ESPN’s Adrian Wojnarowski.\r\nThis comes after Houston acquired some of the Suns’ future draft assets f… [+1160 chars]",
+    },
+    {
+      source: { id: null, name: "BBC News" },
+      author: null,
+      title:
+        "Jamaal Bowman loses New York primary to pro-Israel George Latimer - BBC.com",
+      description:
+        "The war in Gaza loomed large over the hotly anticipated election in New York's 16th district.",
+      url: "https://www.bbc.com/news/articles/cz99x0w65dyo",
+      urlToImage:
+        "https://ichef.bbci.co.uk/news/1024/branded_news/2cd2/live/aa76c620-3347-11ef-a8d0-0397e0dc51ba.jpg",
+      publishedAt: "2024-06-26T02:38:17Z",
+      content:
+        "By Bernd Debusmann Jr, BBC News, Washington \r\nNew York congressman Jamaal Bowman has lost a primary challenge, according to projections, in a closely watched race that exposed a bitter rift within th… [+2748 chars]",
+    },
+    {
+      source: { id: "the-hill", name: "The Hill" },
+      author: "Sarah Fortinsky",
+      title: "CDC warns of increased risk of dengue virus in US - The Hill",
+      description:
+        "The Centers for Disease Control and Prevention (CDC) issued a health advisory on Tuesday warning the public of a heightened risk of dengue virus (DENV) infections in the U.S. this year as cases continue to rise around the globe. Countries in the Americas repo…",
+      url: "https://thehill.com/policy/healthcare/4740310-cdc-increased-risk-dengue-virus-us/",
+      urlToImage:
+        "https://thehill.com/wp-content/uploads/sites/2/2022/08/CDC_041920_AP-Harris.jpg?w=1280",
+      publishedAt: "2024-06-26T02:37:00Z",
+      content:
+        "Skip to content\r\nThe Centers for Disease Control and Prevention (CDC) issued a health advisory on Tuesday warning the public of a heightened risk of dengue virus (DENV) infections in the U.S. this ye… [+2606 chars]",
+    },
+    {
+      source: { id: "fox-news", name: "Fox News" },
+      author: "Jamie Joseph",
+      title:
+        "John Curtis wins highly-contested primary Utah challenge to replace Sen. Mitt Romney - Fox News",
+      description:
+        "John Curtis emerged as the Republican champion to face off against Democratic nominee Caroline Gleich in Utah's open Senate race to replace Sen. Mitt Romney.",
+      url: "https://www.foxnews.com/politics/john-curtis-wins-highly-contested-primary-utah-challenge-replace-sen-mitt-romney",
+      urlToImage:
+        "https://static.foxnews.com/foxnews.com/content/uploads/2024/06/John-Curtis-trent-staggs.jpg",
+      publishedAt: "2024-06-26T02:30:00Z",
+      content:
+        "John Curtis won Tuesday night's primary challenge in Utah, taking one step closer to potentially replacing retiring moderate Republican Sen. Mitt Romney.\r\nCurtis was leading with 52% of the vote when… [+1906 chars]",
+    },
+    {
+      source: { id: "cnn", name: "CNN" },
+      author: "Lauren Said-Moorhouse, Thomas Manglona",
+      title:
+        "Julian Assange ends stalemate with US, exchanging guilty plea for his freedom - CNN",
+      description:
+        "WikiLeaks founder Julian Assange walked free for the first time in 12 years after a US judge signed off on his unexpected plea deal on Wednesday morning.",
+      url: "https://www.cnn.com/2024/06/25/world/julian-assange-plea-deal-hearing-intl/index.html",
+      urlToImage:
+        "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2159251804.jpg?c=16x9&q=w_800,c_fill",
+      publishedAt: "2024-06-26T02:09:00Z",
+      content:
+        "Saipan, Northern Mariana IslandsCNN\r\n  — \r\nWikiLeaks founder Julian Assange walked free for the first time in 12 years after a US judge signed off on his unexpected plea deal on Wednesday morning.\r\nA… [+8395 chars]",
+    },
+    {
+      source: { id: null, name: "BBC News" },
+      author: null,
+      title:
+        "Boeing Starliner: Why are the astronauts still in space? - BBC.com",
+      description:
+        "What has delayed their return and what does it mean for the mission?",
+      url: "https://www.bbc.com/news/articles/c6pp29gdwe6o",
+      urlToImage:
+        "https://ichef.bbci.co.uk/news/1024/branded_news/325e/live/13ab7590-330d-11ef-bdc5-41d7421c2adf.jpg",
+      publishedAt: "2024-06-26T01:09:17Z",
+      content:
+        "Astronauts Suni Williams (left) and Butch Wilmore were supposed to have stayed on the space station for eight days\r\nThe two astronauts testing out Boeings new Starliner spacecraft were supposed to be… [+5198 chars]",
+    },
+    {
+      source: { id: "usa-today", name: "USA Today" },
+      author: "Ahjané Forbes, Sara Chernikoff",
+      title:
+        "Mega Millions numbers for 6/25/24 drawing: $97 million jackpot - USA TODAY",
+      description:
+        "Mega Millions players, are you feeling lucky? The winning numbers are in for the June 25 drawing.",
+      url: "https://www.usatoday.com/story/money/lottery/2024/06/25/mega-millions-numbers/74199453007/",
+      urlToImage:
+        "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/03/22/USAT/73072171007-usatsi-22816449.jpg?crop=4031,2268,x0,y0&width=3200&height=1801&format=pjpg&auto=webp",
+      publishedAt: "2024-06-26T01:02:05Z",
+      content:
+        "The Mega Millions jackpot for Tuesday's drawing has risen to $97 million after no one won the big prize on Friday.\r\nThe winning numbers were drawn just after 11 p.m. ET on Tuesday, and we have the re… [+2945 chars]",
+    },
+  ];
+  constructor() {
+    super();
+    this.state = {
+      articles: this.articles,
+      loading: false,
+    };
+  }
   render() {
     return (
       <div className="container my-3">
         <h2>NewsMonkey - Top Headlines</h2>
         <div className="row">
           <div className="col-md-4">
-            <NewsItem title="MyTitle" descriptio="MyDescription" />
+            <NewsItem
+              title="MyTitle"
+              description="MyDescription"
+              imageUrl="https://www.reuters.com/resizer/v2/UWNRNJBIZNOGVO7R3CRZRHT3U4.jpg?auth=67978678f9576c83850d33c9925cff5b7abf9a1532959341f1abb2e07992f1bb&height=1005&width=1920&quality=80&smart=true"
+              newsUrl="TODO"
+            />
           </div>
           <div className="col-md-4">
-            <NewsItem title="MyTitle" descriptio="MyDescription" />
+            <NewsItem
+              title="MyTitle"
+              description="MyDescription"
+              imageUrl="https://www.reuters.com/resizer/v2/UWNRNJBIZNOGVO7R3CRZRHT3U4.jpg?auth=67978678f9576c83850d33c9925cff5b7abf9a1532959341f1abb2e07992f1bb&height=1005&width=1920&quality=80&smart=true"
+            />
           </div>
           <div className="col-md-4">
-            <NewsItem title="MyTitle" descriptio="MyDescription" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <NewsItem title="MyTitle" descriptio="MyDescription" />
-          </div>
-          <div className="col-md-4">
-            <NewsItem title="MyTitle" descriptio="MyDescription" />
-          </div>
-          <div className="col-md-4">
-            <NewsItem title="MyTitle" descriptio="MyDescription" />
+            <NewsItem
+              title="MyTitle"
+              description="MyDescription"
+              imageUrl="https://www.reuters.com/resizer/v2/UWNRNJBIZNOGVO7R3CRZRHT3U4.jpg?auth=67978678f9576c83850d33c9925cff5b7abf9a1532959341f1abb2e07992f1bb&height=1005&width=1920&quality=80&smart=true"
+            />
           </div>
         </div>
       </div>
