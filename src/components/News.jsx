@@ -285,29 +285,20 @@ export class News extends Component {
     return (
       <div className="container my-3">
         <h2>NewsMonkey - Top Headlines</h2>
+
         <div className="row">
-          <div className="col-md-4">
-            <NewsItem
-              title="MyTitle"
-              description="MyDescription"
-              imageUrl="https://www.reuters.com/resizer/v2/UWNRNJBIZNOGVO7R3CRZRHT3U4.jpg?auth=67978678f9576c83850d33c9925cff5b7abf9a1532959341f1abb2e07992f1bb&height=1005&width=1920&quality=80&smart=true"
-              newsUrl="TODO"
-            />
-          </div>
-          <div className="col-md-4">
-            <NewsItem
-              title="MyTitle"
-              description="MyDescription"
-              imageUrl="https://www.reuters.com/resizer/v2/UWNRNJBIZNOGVO7R3CRZRHT3U4.jpg?auth=67978678f9576c83850d33c9925cff5b7abf9a1532959341f1abb2e07992f1bb&height=1005&width=1920&quality=80&smart=true"
-            />
-          </div>
-          <div className="col-md-4">
-            <NewsItem
-              title="MyTitle"
-              description="MyDescription"
-              imageUrl="https://www.reuters.com/resizer/v2/UWNRNJBIZNOGVO7R3CRZRHT3U4.jpg?auth=67978678f9576c83850d33c9925cff5b7abf9a1532959341f1abb2e07992f1bb&height=1005&width=1920&quality=80&smart=true"
-            />
-          </div>
+          {this.state.articles.map((element) => {
+            return (
+              <div className="col-md-4" key={element.url}>
+                <NewsItem
+                  title={element.title.slice(0, 45)}
+                  description={element.description.slice(0, 88)}
+                  imageUrl={element.urlToImage}
+                  newsUrl={element.url}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     );
