@@ -15,7 +15,6 @@ export class News extends Component {
   async componentDidMount() {
     let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=83ce76eddf244d31b2444b991092684d&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
-
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
@@ -33,7 +32,6 @@ export class News extends Component {
       this.state.page - 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
-
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
